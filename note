@@ -1,0 +1,33 @@
+-------------------------------------------------------------------
+------------------------ IDEE DE PROGRAMME ------------------------
+-------------------------------------------------------------------
+
+Creer un programme qui permet de comprendre le man rapidement, simplement et sans ambiguite. le comparer a notre code. et nous dire si la logique meme de notre code est corectement implementer par rapport a la fonction.
+
+exemple de strlcat. si ce debugger avait vu ma fonction, il aurait detecter que je concatene la destination a la source et non l'inverse.
+
+--------------------------------------------------------------------------------
+------------------------ UTILISER LES ARGUMENTS DU MAIN ------------------------
+--------------------------------------------------------------------------------
+
+/* ne peut pas utliser les arguments du main car (l'argument de is_alpha est un integer et non un char)
+
+int main(int argc, char *argv[])
+{
+    if(argc == 2)
+    {
+        ft_isalpha(argv[0]);
+    }
+
+    return 0;
+}
+
+*/
+
+-----------------------------------------------------------
+------------------------ LES TUTOS ------------------------
+-----------------------------------------------------------
+
+Tuto complet sur l'utilisation de malloc, calloc, realloc et free
+realise par developppez.com
+https://rperrot.developpez.com/articles/c/allocationC/
