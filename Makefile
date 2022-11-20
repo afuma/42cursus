@@ -7,7 +7,7 @@
 # OBJ = $(SRC:.c=.o) -> evaluer a chaque fois qu'elle est utiliser( peut changer en cours d'execution du makefile ) recalculer la variable
 
 CC = gcc
-EXEC = prog
+NAME = libft.a
 # SRC = $(wildcard *.c) # ATTENTION enlever le wildcard sinon -42
 SRC = ft_atoi.c \
       ft_bzero.c ft_calloc.c ft_isalnum.c ft_isalpha.c ft_isascii.c ft_isdigit.c ft_isprint.c ft_memchr.c ft_memcmp.c ft_memcpy.c \
@@ -19,7 +19,7 @@ OBJ = $(SRC:.c=.o)
 INCLUDES = ./libft.h
 CFLAGS = -Wall -Wextra -Werror
 
-all: $(EXEC)
+all: $(NAME)
 
 %.o : %.c $(INCLUDES)
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
@@ -35,5 +35,5 @@ fclean: clean
 
 re: fclean all
 
-$(EXEC): $(OBJ)
-	ar rcs $(EXEC) $(OBJ)
+$(NAME): $(OBJ)
+	ar crs $(NAME) $(OBJ)

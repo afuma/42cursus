@@ -6,7 +6,7 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:50:34 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/16 18:41:42 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/11/20 17:07:06 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,14 @@ size_t ft_strlcat(char *dst, const char *src, size_t size)
         voir man: "the full size of the buffer"
         -> on retourne ce qui est cense etre creer : la petite dest(celle sans src)
     */
-    if (init_dst_len > size) 
-        return (init_dst_len);
-    while(src[i] != '\0' && i < (size - init_dst_len - 1)) // size - 1 parce que le size contient le NUL-terminated
+    // les 2 premieres conditions si dessous,
+    // represente la taille de la chaine qui doit etre creer
+    // mais ce sont bien des "erreurs"
+    if (init_dst_len >= size)
+        return (size + ft_strlen(src));
+    if (!size)
+        return (init_dst_len + ft_strlen(src));
+    while (src[i] != '\0' && i < (size - init_dst_len - 1)) // size - 1 parce que le size contient le NUL-terminated
     {
         dst[init_dst_len + i] = src[i];
         i++;

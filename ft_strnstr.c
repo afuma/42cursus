@@ -6,24 +6,28 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:52:09 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/15 19:23:37 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/11/20 13:55:44 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
+#include <stdio.h>
 
 char *ft_strnstr(const char *big, const char *little, size_t len)
 {
-    int i;
+    // printf("APPEL\n");
+    size_t len_little;
 
-    i = 0;
-    if (little[i] == '\0')
-        return (big);
-    while(*big != '\0' && i < len)
+    len_little = ft_strlen(little);
+    if (!*little)
+        return ((char *) big);
+    while(*big && len-- > 0)
     {
-        if (big[i] == little[0])
-            return (big + i);
-        i++;
+        // printf("len: %ld\n", len);
+        if (!ft_strncmp(big, little, len_little))
+            return ((char *) big);
+        big++;
     }
+    
     return (NULL);
 }

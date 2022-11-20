@@ -1,3 +1,13 @@
+-----------------------------------------------------------
+------------------------ DEBUGGAGE DES FONCTIONS ------------------------
+-----------------------------------------------------------
+
+Globalement, ce sont des erreurs de cast. Parfois tester les casts dans les conditions directement.
+Ne pas caster 2 fois(declaration + affectation) (a la declaration uniquement ca passe le testeur)
+pour les fonctions qui interagissent avec la memoire ou l'on doit copier n bytes,
+utiliser le size_t n et non un compteur i avec les \0, puisqu'on interagit comme si c'etait des caracteres,
+mais rien n'indiquent pour autant qu'il y a un \0 a la fin.
+
 -------------------------------------------------------------------
 ------------------------ IDEE DE PROGRAMME ------------------------
 -------------------------------------------------------------------
@@ -31,3 +41,5 @@ int main(int argc, char *argv[])
 Tuto complet sur l'utilisation de malloc, calloc, realloc et free
 realise par developppez.com
 https://rperrot.developpez.com/articles/c/allocationC/
+
+

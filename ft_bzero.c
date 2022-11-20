@@ -6,7 +6,7 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:49:18 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/14 17:43:08 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/11/17 18:58:35 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@ void ft_bzero(void *s, size_t n)
     char *str;
     
     str = (char *) s;
-    
     i = 0;
-    while(i <= n)
+    while(i < n)
     {
-        *str = '\0';
-        str++;
+        str[i] = '\0';
+        i++;
     }
 }
+
+// ft_memset(s, '\0', n);

@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memcpy.c                                        :+:      :+:    :+:   */
+/*   tuto_while_opti.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 17:49:31 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/18 10:49:27 by edesaint         ###   ########.fr       */
+/*   Created: 2022/11/20 13:42:40 by edesaint          #+#    #+#             */
+/*   Updated: 2022/11/20 13:43:32 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-
-void *ft_memcpy(void *dest, const void *src, size_t n)
+int main(void)
 {
-    const unsigned char *s;
-    unsigned char *d;
-    size_t i;
-
-    s = src;
-    d = dest;
-    i = 0;
-    while(i < n)
-    {
-        d[i] = s[i];
-        i++;
-    }
-
-    return (dest);
+  int i;
+  
+  // test 1 -> in while i--
+  i = 5;
+  while (i > 0)
+  {
+    printf("%d\n", i);
+    i--;
+  }
+  
+  printf("\n");
+  // test 2 -> while i--
+  i = 5;
+  while (i-- > 0) // i-- puis test la condition
+  {
+    printf("%d\n", i);
+  }
+  
+  printf("\n");
+  // test 3 -> while --i
+  i = 5;
+  while (--i > 0) // test la condition puis i--
+  {
+    printf("%d\n", i);
+  }
+  
+  return (0);
 }

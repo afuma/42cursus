@@ -6,7 +6,7 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:52:24 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/13 18:14:47 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/11/20 14:01:50 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,16 +19,16 @@ int ft_atoi(const char *str)
  
    result = 0;
    sign = 1;
+   while ((*str >= 9 && *str <= 13) || *str == ' ')
+        str++;
    if(*str == '-' || *str == '+')
    {
-       if(*str == '-')
-       {
+       if(*str++ == '-')
            sign *= -1;
-       }
    }
-   while(*str >= 48 && *str <= 57)
+   while(ft_isdigit(*str))
    {
-       result = result * 10 + *str;
+       result = result * 10 + (*str - '0');
        str++;
    }
    return (sign * result);

@@ -6,7 +6,7 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:20:28 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/16 18:40:33 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/11/20 13:57:48 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,15 +15,18 @@
 char *ft_strdup(const char *str)
 {
     char *new_str;
-    int i;
+    size_t i;
 
     i = 0;
-    new_str = (char *) malloc(ft_strlen(str) * sizeof(char) + 1);
-    while(str[i] != '\0')
+    new_str = (char *) malloc(sizeof(char) * (ft_strlen(str) + 1));
+    if(!new_str)
+        return (NULL);
+    while(str[i])
     {
         new_str[i] = str[i];
         i++;
     }
-    
+    new_str[i] = '\0';
+
     return (new_str);
 }
