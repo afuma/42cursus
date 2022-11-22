@@ -16,20 +16,16 @@
 char *ft_strjoin(char const *s1, char const *s2)
 {
     char *nstr;
-    unsigned int len_s1;
-    unsigned int len_s2;
     unsigned int size_nstr;
 
-    len_s1 = ft_strlen(s1);
-    len_s2 = ft_strlen(s2);
-    size_nstr = len_s1 + len_s2 + 1;
-    nstr = malloc(sizeof(char) * size_nstr);
+    size_nstr = ft_strlen(s1) + ft_strlen(s2) + 1;
+    nstr = (char *) malloc(sizeof(char) * size_nstr);
     if (!nstr)
         return(NULL);
+    *nstr = '\0';
 
-    ft_strlcat(s1, s2, size_nstr);
     ft_strlcat(nstr, s1, size_nstr);
+    ft_strlcat(nstr, s2, size_nstr);
 
     return (nstr);
 }
-

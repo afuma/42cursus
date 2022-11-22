@@ -42,4 +42,15 @@ Tuto complet sur l'utilisation de malloc, calloc, realloc et free
 realise par developppez.com
 https://rperrot.developpez.com/articles/c/allocationC/
 
+-----------------------------------------------------------
+------------------------ SIZE_MAX ------------------------
+-----------------------------------------------------------
+https://www.developpez.net/forums/d1480424/c-cpp/c/debuter/probleme-fonction-putnbr/
 
+Il n'y a pas d'unsigned char mais un unsigned int
+
+Le principe de votre programme est de calculer la valeur absolue du nombre n puis d'afficher sa valeur éventuellement précédée d'un signe -.
+Le paramètre n est un int donc, dans votre cas, sa valeur est comprise entre INT_MAX = 231-1 et INT_MIN =-231. Cette dernière valeur a une valeur absolue qui ne "rentre" pas dans un int : -INT_MIN = 231 > INT_MAX.
+Si on essaye de stocker -INT_MIN dans un int, la valeur de ce int ne sera pas 231 (c'est impossible) mais restera INT_MIN. Autrement dit INT_MIN est son propre opposé.
+
+nb est du type unsigned int et donc, toujours dans votre cas, est capable de stocker des valeurs comprises entre 0 et UINT_MAX = 232-1 donc tout à fait capable de stocker sans changement de valeur la valeur absolue de tout nombre int.

@@ -6,7 +6,7 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 18:18:49 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/18 15:27:39 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/11/22 11:20:29 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,6 @@ si cela est utile ()
 void *ft_calloc(size_t nmemb, size_t size)
 {
     void *ptr;
-    
-    if (nmemb > SIZE_MAX / size)
-        return (NULL);
         
     if (nmemb == 0 || size == 0)
     {
@@ -48,6 +45,8 @@ void *ft_calloc(size_t nmemb, size_t size)
         ((unsigned char *)ptr)[0] = 0;
         return (ptr);
     }
+    if (nmemb > SIZE_MAX / size)
+        return (NULL);
     ptr = (void *) malloc(nmemb * size);
     // a voir pour initialiser a 0, ptr[i] prends size bytes ou -> 1 bytes <-
     if (!ptr)

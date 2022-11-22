@@ -16,22 +16,22 @@
 char *ft_substr(char const *s, unsigned int start, size_t len)
 {
     char *nstr;
-    unsigned int size_nstr;
+    int size_nstr;
     unsigned int len_s;
 
     len_s = ft_strlen(s);
-    if (len_s - start < len)
-        size_nstr = len_s - start;
-    else
+    if (start > len_s + 1) // cas d'erreur a verifier
+        return (NULL); // a revoir ici
+    size_nstr = len_s - start;
+    if (size_nstr > (int) len)
         size_nstr = len;
-
-    // je pense qu'avec la fonction strndup() ca devrait fonctionner
-    nstr = malloc(sizeof(char) * size_nstr);
+    // if (size_nstr < 0 || size_nstr >= (int) len)
+    //  size_nstr = len;
+    nstr = malloc(sizeof(char) * (size_nstr + 1));
     if (!nstr)
         return(NULL);
     
-    // renvoie la taille de la chaine a creer, on ne la prends pas en compte
-    ft_strlcpy(nstr, s + start, size_nstr);
+    ft_strlcpy(nstr, s + start, size_nstr + 1);
     
     return (nstr);
 }
