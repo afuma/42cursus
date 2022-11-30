@@ -14,11 +14,11 @@
 #include <stdio.h> // printf
 #include <stdint.h> //INT_MAX
 
-static unsigned int ft_abs(int nbr)
+static int ft_abs(int nbr)
 {
     if (nbr < 0)
-        return ((unsigned int) (-nbr));
-    return ((unsigned int) nbr);
+        return (-nbr);
+    return (nbr);
 }
 
 static int ft_neg(int nbr)
@@ -26,7 +26,7 @@ static int ft_neg(int nbr)
     return (nbr < 0);
 }
 
-static unsigned int ft_cptdigit(unsigned int n)
+static int ft_cptdigit(int n)
 {
     int i;
 
@@ -40,18 +40,24 @@ static unsigned int ft_cptdigit(unsigned int n)
     return (i);
 }
 
+static char *ft_allocate(char *str, int len)
+{
+    str = (char *) malloc(sizeof(char) * (len + 1));
+    if (!str)
+        return (NULL);
+    return (str);
+}
+
 char *ft_itoa(int n)
 {
     char *str;
     int len_n;
     int neg;
-    unsigned int nbr;
 
     neg = ft_neg(n);
-    nbr = ft_abs(n);
-    len_n = ft_cptdigit(nbr) + neg;
-    str = (char *) malloc(sizeof(char) * (len_n + 1));
-    if (!str)
+    n = ft_abs(n);
+    len_n = ft_cptdigit(n) + neg;
+    if (!ft_allocate(str, len))
         return (NULL);
     str[len_n] = '\0';
     while (--len_n >= 0)
@@ -60,8 +66,8 @@ char *ft_itoa(int n)
             str[0] = '-';
         else
         {
-            str[len_n] = (nbr % 10) + '0';
-            nbr /= 10;
+            str[len_n] = (n % 10) + '0';
+            n /= 10;
         }
     }
     return (str);

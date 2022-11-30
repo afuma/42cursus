@@ -6,20 +6,21 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:48:57 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/18 11:49:24 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/11/29 19:54:42 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t ft_strlen(const char *str)
+size_t ft_strlen(const char *s)
 {
-    int i;
+    size_t i;
 
+    if(!s)
+        return (0);
     i = 0;
-    while(str[i] != '\0')
+    while(s[i] != '\0')
         i++;
-    // i++; // si on compte le caractere null
 
     return i;
 }

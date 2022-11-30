@@ -12,6 +12,7 @@
     #include <stddef.h> //pour le size_t
     // #include <string.h> //pour certaines fonctions (pour faire les tests)
     #include <stdlib.h>
+    #include <unistd.h>
 
     // FONCTIONS PARTIE 1
     int ft_isalpha(int c);

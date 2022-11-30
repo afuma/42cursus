@@ -6,80 +6,86 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/20 17:43:33 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/22 18:22:31 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/11/30 03:58:14 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-/*
+#include <stdio.h>
 #include "libft.h"
 
-int compt_words(char const *str, char delimiter, int *len_words)
+static void ft_free(char **tab, int i)
 {
+    while (i-- > 0)
+        free(tab[i]);
+    free(tab);
+}
+
+static int ft_nb_words(char const *str, char c)
+{
+    int words;
+    int i;
+    words = 0;
+    i = 0;
+    while (str[i])
+    {
+      while (str[i] && str[i] == c)
+        i++;
+      if (str[i])
+          words++;
+      while (str[i] && str[i] != c)
+        i++;
+    }
+    return (words);
+}
+
+static void ft_create(char **tab, char const *str, char c, size_t nb_words)
+{
+    size_t i;
+    size_t j;
     size_t len_str;
     
     len_str = 0;
-    while (*str)
-    {
-        if (*str != c)
-            len_str++;
-        else
-            ft_substr(str, start, len_str);
-        len_str = -1;
-    }
-
-    return (nb_words);
-}
-
-void fill_tab(char *s, char *stab, int *len_words, size_t nb_words)
-{
-    int i;
-    int j;
-
     i = 0;
     j = 0;
-    while (i < nb_words)
+    while (str[len_str + i] && j < nb_words)
     {
-        while (j <= len_words[i])
-        {
-            stab[i + j] = s[j];
-            j++;
-        }
-        j = 0;
-        i++;
+        while (str[len_str + i] && str[len_str + i] == c)
+            len_str++;
+        while (str[len_str + i] && str[len_str + i] != c)
+            i++;
+        tab[j] = ft_substr(str, len_str, i);
+        if (!tab[j++])
+            ft_free(tab, --j);
+        len_str += i;
+        i = 0;
     }
+    if (tab != NULL)
+        tab[j] = NULL;
 }
 
-void init_tab(char **tab, char *stab, int *len_words)
+char **ft_split(char const *s, char c)
 {
+    char **tab;
+    size_t nb_words;
+    
+    nb_words = ft_nb_words(s, c);
+    tab = (char **) malloc(sizeof(char *) * (nb_words + 1));
+    if (!tab)
+        return (NULL);
+    ft_create(tab, s, c, nb_words);
+    
+    return (tab);
+}
+/*
+int main(void)
+{
+    char * * tab = ft_split("  tripouille  42  ", ' ');
     int i;
 
     i = 0;
-    tab = (char **) malloc(sizeof(char *) * nb_words);
-    if (!tab)
-        return (NULL);
-
-    while (i <= nb_words)
+    while (i < 2)
     {
-        stab = (char *) malloc(sizeof(char) * len_words[i]);
-        if (!stab)
-            return (NULL);
+        printf("mot %d: %s\n", i, tab[i]);
         i++;
     }
-}
-
-char **ft_split(char const *str, char delimiter)
-{
-    char **tab;
-    char *stab;
-    size_t nb_words;
-    int *len_words;
-
-    len_str = 0;
-    nb_words = 0;
-    nb_words = compt_words(s, c, len_words);
-    init_tab(tab, stab, len_words, c);
-    fill_tab(tab, stab, len_words);
-
-    return (tab);
-}
-*/
+}*/

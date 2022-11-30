@@ -1,42 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   tuto_while_opti.c                                  :+:      :+:    :+:   */
+/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/20 13:42:40 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/20 13:43:32 by edesaint         ###   ########.fr       */
+/*   Created: 2022/11/29 17:58:31 by edesaint          #+#    #+#             */
+/*   Updated: 2022/11/29 20:29:48 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int main(void)
+#include "libft.h"
+
+void ft_putnbr_fd(int n, int fd)
 {
-  int i;
-  
-  // test 1 -> in while i--
-  i = 5;
-  while (i > 0)
-  {
-    printf("%d\n", i);
-    i--;
-  }
-  
-  printf("\n");
-  // test 2 -> while i--
-  i = 5;
-  while (i-- > 0) // i-- puis test la condition
-  {
-    printf("%d\n", i);
-  }
-  
-  printf("\n");
-  // test 3 -> while --i
-  i = 5;
-  while (--i > 0) // test la condition puis i--
-  {
-    printf("%d\n", i);
-  }
-  
-  return (0);
+    unsigned int nbr;
+
+    nbr = n;
+    if (n < 0)
+    {
+        ft_putchar_fd('-', fd);
+        nbr = -n;
+    }
+    if (nbr > 9)
+        ft_putnbr_fd(nbr / 10, fd);
+    ft_putchar_fd(nbr % 10 + '0', fd);
 }

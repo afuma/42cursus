@@ -6,7 +6,7 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:52:24 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/20 14:01:50 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/11/23 20:26:58 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,3 +33,5 @@ int ft_atoi(const char *str)
    }
    return (sign * result);
 }
+// faire un main et teser le 0 en fin de chaine comme: 120
+// et voir s'il neretourne pas 1200 avec le \0 comptait comme un 0 ?

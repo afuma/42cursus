@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "sstream": "c",
+        "libft.h": "c"
+    }
+}

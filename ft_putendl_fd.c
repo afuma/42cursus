@@ -1,31 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strnstr.c                                       :+:      :+:    :+:   */
+/*   ft_putendl_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/13 17:52:09 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/29 21:45:38 by edesaint         ###   ########.fr       */
+/*   Created: 2022/11/29 17:50:02 by edesaint          #+#    #+#             */
+/*   Updated: 2022/11/29 21:46:59 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
-char *ft_strnstr(const char *big, const char *little, size_t len)
+void ft_putendl_fd(char *s, int fd)
 {
-    size_t len_little;
-
-    len_little = ft_strlen(little);
-    if (!*little)
-        return ((char *) big);
-    while(*big && len-- >= len_little )
-    {
-        if (!ft_strncmp(big, little, len_little))
-            return ((char *) big);
-        big++;
-    }
-    
-    return (NULL);
+        ft_putstr_fd(s, fd);
+        ft_putchar_fd('\n', fd);
 }
