@@ -1,14 +1,14 @@
-# Pour rendre des bonus, vous devez inclure une règle bonus à votre Makefile qui \
-#ajoutera les divers headers, librairies ou fonctions qui ne sont pas autorisées dans
-#la partie principale du projet.
-
-# SYSTEME = linux
-# OBJ := $(SRC:.c=.o) -> evaluer une seule fois a la declaration
-# OBJ = $(SRC:.c=.o) -> evaluer a chaque fois qu'elle est utiliser( peut changer en cours d'execution du makefile ) recalculer la variable
 
 CC = cc
 NAME = libft.a
-# SRC = $(wildcard *.c) # ATTENTION enlever le wildcard sinon -42
+
+INCLUDES = ./libft.h
+CFLAGS = -Wall -Wextra -Werror
+
+RM = rm -f
+AR = ar
+ARFLAGS = crs
+
 SRC = ft_atoi.c \
       ft_bzero.c \
       ft_calloc.c \
@@ -44,30 +44,37 @@ SRC = ft_atoi.c \
       ft_putendl_fd.c \
       ft_putnbr_fd.c
 
-# ft_lstnew.c ft_lstadd_front.c ft_lstsize.c ft_lstlast.c ft_lstadd_back.c ft_lstdelone.c ft_lstclear.c ft_lstiter.c ft_lstmap.c
-
+SRC_BONUS = ft_lstnew.c \
+            ft_lstadd_front.c \
+            ft_lstsize.c \
+            ft_lstlast.c \
+            ft_lstadd_back.c \
+            ft_lstdelone.c \
+            ft_lstclear.c \
+            ft_lstiter.c \
+            ft_lstmap.c
+            
 OBJ = $(SRC:.c=.o)
 
-INCLUDES = ./libft.h
-CFLAGS = -Wall -Wextra -Werror
+OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
 all: $(NAME)
 
 %.o : %.c $(INCLUDES)
 	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
-	
-# $(EXEC): $(OBJ)
-# 	$(CC) $(CFLAGS) -o $@ $^
 
 clean:
-	rm -f *.o # a revoir pas le droit de mettre *
+	$(RM) $(OBJ) $(OBJ_BONUS)
 
 fclean: clean
-	rm -f $(NAME)
+	$(RM) $(NAME)
 
 re: fclean all
 
 $(NAME): $(OBJ)
-	ar crs $(NAME) $(OBJ)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJ)
 	
-#.PHONY
+bonus : $(OBJ) $(OBJ_BONUS)
+	$(AR) $(ARFLAGS) $(NAME) $(OBJ) $(OBJ_BONUS)
+
+.PHONY: all clean fclean re bonus

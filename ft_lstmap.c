@@ -1,28 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 17:58:31 by edesaint          #+#    #+#             */
-/*   Updated: 2022/12/05 19:37:45 by edesaint         ###   ########.fr       */
+/*   Created: 2022/12/01 23:12:53 by edesaint          #+#    #+#             */
+/*   Updated: 2022/12/05 19:22:21 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	unsigned int	nbr;
+	t_list	*node;
+	t_list	*new;
 
-	nbr = n;
-	if (n < 0)
+	if (!lst || !f || !del)
+		return (NULL);
+	node = NULL;
+	while (lst)
 	{
-		ft_putchar_fd('-', fd);
-		nbr = -n;
+		new = ft_lstnew((*f)(lst->content));
+		if (!new)
+		{
+			ft_lstclear(&node, del);
+			return (NULL);
+		}
+		ft_lstadd_back(&node, new);
+		lst = lst->next;
 	}
-	if (nbr > 9)
-		ft_putnbr_fd(nbr / 10, fd);
-	ft_putchar_fd(nbr % 10 + '0', fd);
+	return (node);
 }

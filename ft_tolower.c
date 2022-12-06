@@ -6,17 +6,15 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:51:05 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/15 19:23:51 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/12/05 20:22:34 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_tolower(int c)
+int	ft_tolower(int c)
 {
-    if (c >= 65 && c <= 90)
-    {
-        c += 32; // 26 lettres + 6 caracteres speciaux
-    }
-    return (c);
+	if (c >= 'A' && c <= 'Z')
+		c += 32;
+	return (c);
 }

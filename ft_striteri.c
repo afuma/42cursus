@@ -6,23 +6,23 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:37:10 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/29 20:31:48 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/12/05 19:57:29 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_striteri(char *s, void (*f)(unsigned int, char*))
+void	ft_striteri(char *s, void (*f)(unsigned int, char*))
 {
-    size_t i;
+	size_t	i;
 
-    i = 0;
-    if (s && f)
-    {
-        while (s[i])
-        {
-            f(i, s + i);
-            i++;
-        }
-    }
+	i = 0;
+	if (s && f)
+	{
+		while (s[i])
+		{
+			f(i, s + i);
+			i++;
+		}
+	}
 }

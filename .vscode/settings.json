@@ -2,6 +2,10 @@
     "files.associations": {
         "stdlib.h": "c",
         "sstream": "c",
-        "libft.h": "c"
-    }
+        "libft.h": "c",
+        "stddef.h": "c",
+        "stdio.h": "c"
+    },
+    "editor.tabCompletion": "on",
+    "emmet.triggerExpansionOnTab": true
 }

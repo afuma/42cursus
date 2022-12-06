@@ -6,14 +6,11 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:48:32 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/13 18:06:35 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/12/05 20:43:45 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int ft_isascii(int c)
+int	ft_isascii(int c)
 {
-    /* man: checks whether c is a 7-bit unsigned char value that  fits  into
-              the ASCII character set.
-    */
-    return (c >= 0 && c <= 127);
+	return (c >= 0 && c <= 127);
 }

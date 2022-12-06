@@ -1,28 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putnbr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstiter.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/11/29 17:58:31 by edesaint          #+#    #+#             */
-/*   Updated: 2022/12/05 19:37:45 by edesaint         ###   ########.fr       */
+/*   Created: 2022/12/01 23:10:04 by edesaint          #+#    #+#             */
+/*   Updated: 2022/12/05 19:28:24 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_putnbr_fd(int n, int fd)
+void	ft_lstiter(t_list *lst, void (*f)(void *))
 {
-	unsigned int	nbr;
-
-	nbr = n;
-	if (n < 0)
+	if (!lst || !f)
+		return ;
+	while (lst)
 	{
-		ft_putchar_fd('-', fd);
-		nbr = -n;
+		(*f)(lst->content);
+		lst = lst->next;
 	}
-	if (nbr > 9)
-		ft_putnbr_fd(nbr / 10, fd);
-	ft_putchar_fd(nbr % 10 + '0', fd);
 }

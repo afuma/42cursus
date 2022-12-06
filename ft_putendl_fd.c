@@ -6,14 +6,14 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/29 17:50:02 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/29 21:46:59 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/12/05 19:50:16 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void ft_putendl_fd(char *s, int fd)
+void	ft_putendl_fd(char *s, int fd)
 {
-        ft_putstr_fd(s, fd);
-        ft_putchar_fd('\n', fd);
+	ft_putstr_fd(s, fd);
+	ft_putchar_fd('\n', fd);
 }

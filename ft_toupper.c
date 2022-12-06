@@ -6,17 +6,15 @@
 /*   By: edesaint <edesaint@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/13 17:50:46 by edesaint          #+#    #+#             */
-/*   Updated: 2022/11/15 19:24:10 by edesaint         ###   ########.fr       */
+/*   Updated: 2022/12/05 20:33:31 by edesaint         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int ft_toupper(int c)
+int	ft_toupper(int c)
 {
-    if (c >= 97 && c <= 122)
-    {
-        c -= 32; // 26 lettres + 6 caracteres speciaux
-    }
-    return (c);
+	if (c >= 'a' && c <= 'z')
+		c -= 32;
+	return (c);
 }
